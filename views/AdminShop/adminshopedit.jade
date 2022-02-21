@@ -1,0 +1,38 @@
+extends ../PublicViews/public
+block admin
+ html
+  head
+  body
+    .mws-panel.grid_8
+      .mws-panel-header
+        span 入驻商家修改
+      .mws-panel-body.no-padding
+        form.mws-form(action='/adminshopdoedit' method="post" enctype="multipart/form-data")
+          .mws-form-inline
+            .mws-form-row
+              label.mws-form-label 商家名字
+              .mws-form-item
+                input.large(type='text' name="name" value="#{data.name}")
+             .mws-form-row
+              label.mws-form-label 商家图片
+              .mws-form-item
+                img(src=src="https://yuliner2.oss-cn-beijing.aliyuncs.com/#{data.pic}", alt="" width="100px" height="100px")
+            .mws-form-row
+              label.mws-form-label 上传新图片
+              .mws-form-item
+                input.large(type='file' name="pic")
+            .mws-form-row
+              label.mws-form-label 商家描述
+              .mws-form-item
+                input.large(type='text' name="content" value="#{data.content}")
+            .mws-form-row
+              label.mws-form-label 商家配送费
+              .mws-form-item
+                input.large(type='text' name="fee" value="#{data.fee}")
+          .mws-button-row
+            input(type="hidden" name="id" value="#{data.id}")
+            input.btn.btn-danger(type='submit' value='商家修改')
+            input.btn(type='reset' value='Reset')
+
+block title 
+    | 后台入驻商家修改

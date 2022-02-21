@@ -1,0 +1,29 @@
+extends ../PublicViews/public
+block admin
+ .mws-panel.grid_8
+  .mws-panel-header
+    span
+      i.icon-table
+      |  会员收货地址管理
+  .mws-panel-body.no-padding
+    #DataTables_Table_1_wrapper.dataTables_wrapper(role='grid')
+      #DataTables_Table_1_filter.dataTables_filter
+      table#DataTables_Table_1.mws-datatable-fn.mws-table.dataTable(aria-describedby='DataTables_Table_1_info')
+        thead
+          tr(role='row')
+            th.sorting_asc(role='columnheader' tabindex='0' aria-controls='DataTables_Table_1' rowspan='1' colspan='1' aria-sort='ascending' aria-label='Rendering engine: activate to sort column descending' style='width: 122px;') 序号
+            th.sorting(role='columnheader' tabindex='0' aria-controls='DataTables_Table_1' rowspan='1' colspan='1' aria-label='Browser: activate to sort column ascending' style='width: 163px;') 收货人
+            th.sorting(role='columnheader' tabindex='0' aria-controls='DataTables_Table_1' rowspan='1' colspan='1' aria-label='Platform(s): activate to sort column ascending' style='width: 149px;') 收货电话
+            th.sorting(role='columnheader' tabindex='0' aria-controls='DataTables_Table_1' rowspan='1' colspan='1' aria-label='Platform(s): activate to sort column ascending' style='width: 149px;') 详细的地址
+        tbody(role='alert' aria-live='polite' aria-relevant='all')
+         if(data.length>0)
+          -for(var i=0;i<data.length;i++)
+           tr.odd
+             td.sorting_1 #{data[i].id}
+             td.Firefox #{data[i].name}
+             td.Firefox #{data[i].phone}
+             td.Firefox #{data[i].address}
+         else 
+            h2(style='color:white') 此会员还没有收货地址
+block title 
+    | 后台收货地址管理
